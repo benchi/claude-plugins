@@ -1,0 +1,41 @@
+name: Validate plugins
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Validate marketplace and plugins
+        run: |
+          claude plugin validate .
+          for dir in plugins/*/; do
+            claude plugin validate --strict "$dir"
+          done
+
+      - name: Check explicit versions and version bumps
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="origin/${{ github.base_ref }}"
+          else
+            BASE="${{ github.event.before }}"
+          fi
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            python3 scripts/check_versions.py
+          else
+            python3 scripts/check_versions.py "$BASE"
+          fi

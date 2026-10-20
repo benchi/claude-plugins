@@ -1,0 +1,14 @@
+{
+  "name": "benchi",
+  "description": "Claude plugins by Laurent Benchimol",
+  "owner": {
+    "name": "Laurent Benchimol"
+  },
+  "plugins": [
+    {
+      "name": "ghin-scorecard",
+      "source": "./plugins/ghin-scorecard",
+      "description": "Post a golf round to GHIN hole-by-hole from a scorecard screenshot (e.g. Garmin Golf)."
+    }
+  ]
+}

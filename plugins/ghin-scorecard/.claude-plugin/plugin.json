@@ -1,0 +1,19 @@
+{
+  "name": "ghin-scorecard",
+  "version": "0.2.0",
+  "description": "Post a golf round to GHIN hole-by-hole from a scorecard screenshot (e.g. Garmin Golf). Extracts course, tee, date and hole scores, shows them for review, and enters them on ghin.com through the browser, posting only after you confirm.",
+  "author": {
+    "name": "Laurent Benchimol"
+  },
+  "keywords": [
+    "golf",
+    "ghin",
+    "handicap",
+    "garmin",
+    "scorecard",
+    "usga"
+  ],
+  "homepage": "https://github.com/benchi/claude-plugins/tree/main/plugins/ghin-scorecard",
+  "repository": "https://github.com/benchi/claude-plugins",
+  "license": "MIT"
+}
